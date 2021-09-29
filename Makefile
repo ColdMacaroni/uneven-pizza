@@ -2,7 +2,7 @@
 
 CC=clang
 CC_FLAGS=-Wall -Wextra -pedantic
-CC_LIBS=
+CC_LIBS=-lraylib -lm
 
 BIN_FILE=pizzar
 
