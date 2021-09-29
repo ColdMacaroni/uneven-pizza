@@ -23,6 +23,9 @@ all: $(OBJ_DIR) $(BIN_DIR) $(BIN_FILE)
 $(BIN_FILE): $(OBJ_FILES)
 	$(CC) $(CC_FLAGS) -o $(BIN_DIR)/$@ $^ -I$(HDR_DIR) $(CC_LIBS)
 
+O3: $(OBJ_FILES)
+	$(CC) $(CC_FLAGS) -O3 -o $(BIN_DIR)/$(BIN_FILE) $^ -I$(HDR_DIR) $(CC_LIBS)
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CC_FLAGS) -o $@ -c $^ -I$(HDR_DIR)
 
