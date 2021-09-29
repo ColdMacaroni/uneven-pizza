@@ -48,17 +48,24 @@ main(int argc, char **argv)
     // Get a new center
     Vector2 bad_centre = rand_pt_circle(centre, r);
 
+
     SetTargetFPS(60);
 
     InitWindow(WIN_WIDTH, WIN_HEIGHT, "Why");
+
+    Image _pizza = LoadImage("pizza.png");
+    Texture2D pizza = LoadTextureFromImage(_pizza);
+    UnloadImage(_pizza);
+
     while (!WindowShouldClose())
     {
         BeginDrawing();
             ClearBackground(WHITE);
-            DrawCircleLines(centre.x, centre.y, r, BLACK);
+            /* DrawCircleLines(centre.x, centre.y, r, BLACK); */
+            DrawTexture(pizza, 0, 0, WHITE);
 
             for (int i = 0; i < num_slices; i++)
-                DrawLineV(slices[i], bad_centre, BLACK);
+                DrawLineEx(slices[i], bad_centre, 4.5, WHITE);
 
         EndDrawing();
         if (IsKeyPressed(KEY_SPACE))
@@ -69,6 +76,7 @@ main(int argc, char **argv)
             bad_centre = rand_pt_circle(centre, r);
         }
     }
+    UnloadTexture(pizza);
     CloseWindow();
 
     free(slices);
