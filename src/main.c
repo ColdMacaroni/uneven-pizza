@@ -48,8 +48,9 @@ main(int argc, char **argv)
     // Get a new center
     Vector2 bad_centre = rand_pt_circle(centre, r);
 
-    InitWindow(WIN_WIDTH, WIN_HEIGHT, "Why");
+    SetTargetFPS(60);
 
+    InitWindow(WIN_WIDTH, WIN_HEIGHT, "Why");
     while (!WindowShouldClose())
     {
         BeginDrawing();
@@ -90,7 +91,7 @@ Vector2 *gen_slices(const Vector2 centre, const float r, const int num_slices)
 
     for (int i = 0; i < num_slices; i++)
     {
-        float uneven = rand_float(0, M_PI/8);
+        float uneven = rand_float(0, offset) - offset*2/3;
         slices[i] = (Vector2){
             centre.x + r * cos(offset * i + uneven),
             centre.y + r * sin(offset * i + uneven)
